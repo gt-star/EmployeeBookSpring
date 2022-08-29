@@ -3,7 +3,6 @@ package com.example.employeebookspring.Service;
 import com.example.employeebookspring.model.Employee;
 
 import java.util.List;
-
 public interface EmployeeService {
 
     List<Employee> getAll();

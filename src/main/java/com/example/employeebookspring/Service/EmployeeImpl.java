@@ -22,7 +22,6 @@ public class EmployeeImpl implements EmployeeService {
     public List<Employee> getAll(){
         return Collections.unmodifiableList(employees);
     }
-
     @Override
     public Employee addEmployees(String name, String lastName){
         Employee employee = new Employee(name,lastName);

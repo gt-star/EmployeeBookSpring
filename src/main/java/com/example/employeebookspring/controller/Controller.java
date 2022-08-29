@@ -8,21 +8,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/employee")
 public class Controller {
     private final EmployeeService employeeService;
-
     public Controller(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
-
     @GetMapping(path = "/get")
     public List<Employee> getAll(){
         return employeeService.getAll();
     }
-
     @GetMapping(path = "/add")
     public Employee addEmployees(@RequestParam("name") String name,
                                @RequestParam("lastName") String lastName){
@@ -38,5 +34,4 @@ public class Controller {
                                   @RequestParam("lastName") String lastName){
         return employeeService.findEmployees(name,lastName);
     }
-
 }
