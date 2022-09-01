@@ -17,7 +17,7 @@ public class Controller {
     }
     @GetMapping(path = "/get")
     public List<Employee> getAll(){
-        return employeeService.getAll();
+        return (List<Employee>) employeeService.getAll();
     }
     @GetMapping(path = "/add")
     public Employee addEmployees(@RequestParam("name") String name,

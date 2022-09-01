@@ -2,10 +2,11 @@ package com.example.employeebookspring.Service;
 
 import com.example.employeebookspring.model.Employee;
 
-import java.util.List;
+import java.util.Collection;
+
 public interface EmployeeService {
 
-    List<Employee> getAll();
+    Collection<Employee> getAll();
 
     Employee addEmployees(String name, String lastName);
 
