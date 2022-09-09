@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/employee")
-public class Controller {
+public class Controller{
     private final EmployeeService employeeService;
     public Controller(EmployeeService employeeService) {
         this.employeeService = employeeService;
@@ -40,22 +39,6 @@ public class Controller {
     public Employee findEmployees(@RequestParam("name") String name,
                                   @RequestParam("lastName") String lastName) {
         return employeeService.findEmployees(name, lastName);
-    }
-    @GetMapping(path ="/max-salary")
-    public Employee maxSalary(@RequestParam("departmentId")int departmentId){
-        return employeeService.getMaxSalary(departmentId);
-    }
-    @GetMapping(path ="/min-salary")
-    public Employee minSalary(@RequestParam("departmentId")int departmentId){
-        return employeeService.getMinSalary(departmentId);
-    }
-    @GetMapping(path ="/allDepartmentId")
-    public Map<Integer, List<Employee>> allDepartmentsId(@RequestParam("departmentId")int departmentId){
-        return employeeService.getAllDepartmentId(departmentId);
-    }
-    @GetMapping(path ="/all")
-    public Map<Integer, List<Employee>> allDepartmentsId(){
-        return employeeService.getAllDepartment();
     }
 
 }

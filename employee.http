@@ -10,10 +10,10 @@ GET http://localhost:8080/employee/add?name=ivan4&lastName=ivanov4&salary=33304&
 ###
 GET http://localhost:8080/employee/add?name=ivan5&lastName=ivanov5&salary=33304&department=2
 ###
-GET http://localhost:8080/employee/max-salary?departmentId=1
+GET http://localhost:8080/departments/max-salary?departmentId=1
 ###
-GET http://localhost:8080/employee/min-salary?departmentId=1
+GET http://localhost:8080/departments/min-salary?departmentId=1
 ###
-GET http://localhost:8080/employee/allDepartmentId?departmentId=1
+GET http://localhost:8080/departments/allDepartmentId?departmentId=1
 ###
-GET http://localhost:8080/employee/all
+GET http://localhost:8080/departments/allDepartment
