@@ -1,15 +1,41 @@
 package com.example.employeebookspring.Service;
+
+import com.example.employeebookspring.exception.EmployeeNotFoundException;
 import com.example.employeebookspring.model.Employee;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
-public interface DepartmentService{
-    Employee getMaxSalary(int departmentId);
+@Service
+public class DepartmentService {
+    private final EmployeeService employeeService;
 
-    Employee getMinSalary(int department);
+    public DepartmentService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
-    Map<Integer, List<Employee>> getAllDepartmentId(int departmentId);
+    public Employee getMaxSalary(int department){
+        return employeeService.getAll().stream()
+                .filter(employee -> employee.getDepartment()==department)
+                .max(Comparator.comparingDouble(Employee::getSalary))
+                .orElseThrow(EmployeeNotFoundException::new);
+    }
 
-    Map<Integer, List<Employee>> getAllDepartment();
+    public Employee getMinSalary(int department) {
+        return employeeService.getAll().stream()
+                .filter(employee -> employee.getDepartment()==department)
+                .min(Comparator.comparingDouble(Employee::getSalary))
+                .orElseThrow(EmployeeNotFoundException::new);
+    }
+
+    public List<Employee> getAllDepartmentId(int departmentId) {
+        return employeeService.getAll().stream().filter(employee -> employee.getDepartment() == departmentId)
+                .collect(Collectors.toList());
+    }
+
+    public Map<Integer, List<Employee>> getAllDepartment(){
+        return employeeService.getAll().stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment));
+    }
 }
